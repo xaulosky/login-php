@@ -7,7 +7,7 @@
             <div class="col-md-4 col-md-iffset-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form action="validarCode.php" method="POST" role="form">
+                        <form id="login-form" action="validarCode.php" method="POST" role="form">
                             <legend>Iniciar Sesion</legend>
 
                             <div class="form-group">
