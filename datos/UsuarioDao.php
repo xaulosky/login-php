@@ -20,16 +20,20 @@ class UsuarioDao extends Conexion{
      * @return  boolean
      */
     public static function login($usuario){
-        $query = "SELECT id,nombre,usuario,email,privilegio,fecha_registro FROM  usuarios WHERE usuario = :usuario AND password = :password";
+        $query = "SELECT * FROM usuarios WHERE usuario = :usuario AND password = :password";
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
-        $resultado->bindParam(":usuario", $usuario->getUsuario());
-        $resultado->bindParam(":password", $usuario->getPassword());
+
+        $resultado->bindValue(":usuario", $usuario->getUsuario());
+        $resultado->bindValue(":password", $usuario->getPassword());
 
         $resultado->execute();
-        if(count($resultado)){
-            return true;
+        if($resultado->rowCount() > 0){
+            $filas = $resultado->fetch();
+            if($filas["usuario"] == $usuario->getUsuario() && $filas["password"] == $usuario->getPassword()){
+                return true;
+            }
         }
         return false;
     }
