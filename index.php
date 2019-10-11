@@ -7,9 +7,6 @@
     <title>login-prubaDeRama-php</title>
 </head>
 <body>
-    <h1>hola</h1>
-    <p>Parrafo</p>
-    <p>Parrafo dos</p>
-    <h2>h2</h2>
+    
 </body>
 </html>
